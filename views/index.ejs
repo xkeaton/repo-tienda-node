@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Título</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product => { %>
+                <tr>
+                    <td><img src="<%= product.image %>" alt="<%= product.title %>" width="100"></td>
+                    <td><%= product.title %></td>
+                    <td>$<%= product.price.toFixed(2) %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>    
+    <div class="products">
+        <% products.forEach(product => { %>
+            <div class="product">             
+                <p><%= product.Título %></p>
+                <p>Precio: $<%= product.price.toFixed(2) %></p>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
