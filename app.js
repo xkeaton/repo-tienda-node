@@ -1,5 +1,5 @@
 const express = require('express');
-const axios = require('axios');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -8,8 +8,8 @@ app.set('views', './views');
 app.use(express.static('public'));
 app.get('/', async (req, res) => {
     try {
-        const response = await axios.get('https://fakestoreapi.com/products');
-        const products = response.data;
+        const response = await fetch('https://fakestoreapi.com/products');
+        const products = await response.json();
         res.render('index', { products });
     } catch (error) {
         console.error('Error fetching products:', error);
